@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": " gulp build",
+    "start": " gulp ts & node ./src/app.js"
+  },
+  "author": "Barend Erasmus",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^7.0.5",
+    "btoa": "^1.1.2",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-typescript": "^3.1.4",
+    "resize-img": "^1.1.2",
+    "stream": "0.0.2",
+    "typescript": "^2.1.5"
+  }
+}
