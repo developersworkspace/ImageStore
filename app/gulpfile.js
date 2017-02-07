@@ -8,7 +8,7 @@ var ts = require('gulp-typescript');
 gulp.task('ts', ['clean'], function () {
     return gulp
         .src(["./src/**/*.ts"], { base: './src' })
-        .pipe(ts({ module: 'commonjs', noImplicitAny: false, allowJs: true, allowUnreachableCode: true }))
+        .pipe(ts({ module: 'commonjs', target: 'es6', noImplicitAny: false, allowJs: true, allowUnreachableCode: true }))
         .pipe(gulp.dest('./src'));
 });
 
