@@ -64,9 +64,11 @@ function processFile(p: string) {
     });
 }
 
-var supportedExt = ['jpg', 'png', 'jpeg']
+let sourceDirectory = process.argv[2];
+
+let supportedExt = ['jpg', 'png', 'jpeg']
 let items = [];
-let directories = listDirectories('./../sampleSource');
+let directories = listDirectories(sourceDirectory);
 
 for (let i = 0; i < directories.length; i++) {
     let files = listFiles(directories[i]);

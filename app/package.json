@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": " gulp build",
-    "start": " gulp ts & node ./src/app.js"
+    "start": " gulp ts & node ./src/app.js ./../sampleSource"
   },
   "author": "Barend Erasmus",
   "license": "MIT",
