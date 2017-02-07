@@ -9,12 +9,15 @@ let router = express.Router();
 
 
 router.get('/exist', (req: Request, res: Response, next: Function) => {
-
+    console.log('exist');
     let imageService = new ImageService();
 
     imageService.exist(req.query.hash).then((exist: Boolean) => {
+        // res.json({
+        //     exist: exist
+        // });
         res.json({
-            exist: exist
+            exist: false
         });
     }).catch((err: Error) => {
         res.status(500).json({
@@ -24,7 +27,7 @@ router.get('/exist', (req: Request, res: Response, next: Function) => {
 });
 
 router.post('/upload', (req: Request, res: Response, next: Function) => {
-
+    console.log('upload');
     let imageService = new ImageService();
 
     imageService.upload(req.body).then((result: any) => {

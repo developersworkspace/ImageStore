@@ -4,7 +4,7 @@ import path = require('path');
 
 // Imports helpers
 import * as imageHelper from './imageHelper';
-import * as fileHelper from './fileHelper';
+import * as fileHelper from './ftpFileHelper';
 import * as apiHelper from './apiHelper';
 
 export function processImageFile(deviceId: string, sourceDirectory: string, p: string) {
@@ -19,7 +19,7 @@ export function processImageFile(deviceId: string, sourceDirectory: string, p: s
             apiHelper.checkIfFileExist(hash).then((exist) => {
 
                 if (exist) {
-
+                    
                     resolve(false);
 
                 } else {
@@ -27,14 +27,21 @@ export function processImageFile(deviceId: string, sourceDirectory: string, p: s
                     fileHelper.getTagsFromDirectory(directory).then((tags: string[]) => {
 
                         imageHelper.getBase64Thumbnail(p).then((base64: string) => {
-
                             apiHelper.uploadThumbnail(deviceId, hash, base64, tags, relativePath, filename).then((r: any) => {
                                 resolve(true);
-                            });
+                            }).catch((err: Error) => {
+                                reject(err);
+                            });;
                         });
+                    }).catch((err: Error) => {
+                        reject(err);
                     });
                 }
-            });
-        });
+            }).catch((err: Error) => {
+                reject(err);
+            });;
+        }).catch((err: Error) => {
+            reject(err);
+        });;
     });
 }

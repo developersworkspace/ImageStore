@@ -1,18 +1,26 @@
 // Imports
 import fs = require('fs');
 import path = require('path');
-import crypto = require('crypto')
+import crypto = require('crypto');
 
 export function listDirectories(p: string) {
-    return fs.readdirSync(p)
-        .filter(file => fs.statSync(path.join(p, file)).isDirectory())
-        .map((file) => path.join(p, file));
+    return new Promise((resolve, reject) => {
+        let list = fs.readdirSync(p)
+            .filter(file => fs.statSync(path.join(p, file)).isDirectory())
+            .map((file) => path.join(p, file));
+
+        resolve(list);
+    });
 }
 
 export function listFiles(p: string) {
-    return fs.readdirSync(p)
-        .filter(file => fs.statSync(path.join(p, file)).isFile())
-        .map((file) => path.join(p, file));
+    return new Promise((resolve, reject) => {
+        let list = fs.readdirSync(p)
+            .filter(file => fs.statSync(path.join(p, file)).isFile())
+            .map((file) => path.join(p, file));
+
+        resolve(list);
+    });
 }
 
 
@@ -44,7 +52,11 @@ export function getFileChecksum(p: string) {
 }
 
 export function getFileContents(p: string) {
-    return fs.readFileSync(p);
+    return new Promise((resolve, reject) => {
+        let data = fs.readFileSync(p);
+
+        resolve(data);
+    });
 }
 
 function checksum(str, algorithm, encoding) {

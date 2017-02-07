@@ -4,34 +4,37 @@ import path = require('path');
 import uuid = require('uuid');
 
 // Imports helpers
-import * as fileHelper from './helpers/fileHelper';
+import * as fileHelper from './helpers/ftpFileHelper';
 import * as appHelper from './helpers/appHelper';
 
 
 function start() {
-    console.log('Scanning...');
-
-    let sourceDirectory = process.argv[2];
+    //let sourceDirectory = process.argv[2];
+    let sourceDirectory = '/home/barend/sampleSource'
 
     let supportedExt = ['jpg', 'png', 'jpeg']
-    let items = [];
-    let directories = fileHelper.listDirectories(sourceDirectory);
 
-    for (let i = 0; i < directories.length; i++) {
-        let files = fileHelper.listFiles(directories[i]);
+    fileHelper.listDirectories(sourceDirectory).then((directories: string[]) => {
+        for (let i = 0; i < directories.length; i++) {
 
-        for (let j = 0; j < files.length; j++) {
-            if (supportedExt.indexOf(files[j].split('.').pop()) > -1) {
-                let r = appHelper.processImageFile(deviceId, sourceDirectory, files[j]);
-                items.push(r);
-            }
+            fileHelper.listFiles(directories[i]).then((files: any[]) => {
+                for (let j = 0; j < files.length; j++) {
+                    if (supportedExt.indexOf(files[j].split('.').pop()) > -1) {
+                        appHelper.processImageFile(deviceId, sourceDirectory, files[j])
+                            .then((result) => {
+                                console.log(result);
+                            }).catch((err: Error) => {
+                                console.log(err);
+                            });;
+                    }
+                }
+            }).catch((err: Error) => {
+                console.log(err);
+            });
         }
-    }
-
-    Promise.all(items).then((result) => {
-        console.log('Completed.');
-    });
-
+    }).catch((err: Error) => {
+        console.log(err);
+    });;
 }
 
 let deviceId = null;
@@ -46,6 +49,5 @@ if (fs.existsSync('./app.data')) {
         start();
     });
 }
-
 
 

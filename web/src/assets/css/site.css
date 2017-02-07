@@ -19,4 +19,5 @@
 .image-item img {
     margin-top: 2px;
     margin-bottom: 2px;
+    max-height: 150px;
 }

@@ -18,6 +18,15 @@ export function checkIfFileExist(hash: string) {
 
 export function uploadThumbnail(deviceId: string, hash: string, base64: string, tags: string[], relativePath: string, name: string) {
     return new Promise((resolve, reject) => {
+        console.log({
+            deviceId: deviceId,
+            hash: hash,
+            base64: base64,
+            tags: tags,
+            relativePath: relativePath,
+            name: name
+        });
+
         request({
             url: 'http://localhost:3000/api/image/upload',
             method: 'POST',
