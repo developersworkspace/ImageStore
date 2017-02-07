@@ -2,19 +2,21 @@
     height: 100%;
 }
 
-.container {
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-#image-list img {
-    min-height: 150px;
-}
-
 #image-list div button {
     margin-top: 5px;
 }
 
 #image-list div {
     margin-top: 9px;
+}
+
+.image-item {
+    border-style: ridge;
+    margin: 2px;
+    background-color: #f6f6f6;
+}
+
+.image-item img {
+    margin-top: 2px;
+    margin-bottom: 2px;
 }

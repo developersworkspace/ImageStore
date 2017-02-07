@@ -1,3 +1,28 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-stacked">
+        <li role="presentation"><a href="#">General</a></li>
+        <li role="presentation"><a href="#">Sports</a></li>
+        <li role="presentation"><a href="#">Architecture</a></li>
+        <li role="presentation"><a href="#">Nature</a></li>
+        <li role="presentation"><a href="#">Wedding</a></li>
+      </ul>
+    </div>
+    <div class="col-md-9" id="image-list">
+      <div class="row">
+        <div class="col-md-2 image-item" *ngFor="let item of images;">
+          <img src="/assets/images/sample/one.jpg" class="img-thumbnail" />
+          <span class="label label-default">nature</span>
+          <span class="label label-default">nature</span>
+          <br />
+          <br />
+          <a href="#" class="pull-left"><i class="fa fa-download"></i> Download</a>
+          <span class="pull-right"><i class="fa fa-clock-o"></i> 2017-01-01</span>
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

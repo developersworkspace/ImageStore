@@ -8,22 +8,6 @@ import * as fileHelper from './helpers/fileHelper';
 import * as appHelper from './helpers/appHelper';
 
 
-let deviceId = null;
-
-if (fs.existsSync('./app.data')) {
-    deviceId = fs.readFileSync('./app.data').toString();
-    start();
-
-} else {
-    deviceId = uuid.v4();
-    fs.writeFile('app.data', deviceId, (err: Error) => {
-        start();
-    });
-}
-
-
-
-
 function start() {
     console.log('Scanning...');
 
@@ -48,6 +32,19 @@ function start() {
         console.log('Completed.');
     });
 
+}
+
+let deviceId = null;
+
+if (fs.existsSync('./app.data')) {
+    deviceId = fs.readFileSync('./app.data').toString();
+    start();
+
+} else {
+    deviceId = uuid.v4();
+    fs.writeFile('app.data', deviceId, (err: Error) => {
+        start();
+    });
 }
 
 
