@@ -10,3 +10,11 @@
 #image-list img {
     min-height: 150px;
 }
+
+#image-list div button {
+    margin-top: 5px;
+}
+
+#image-list div {
+    margin-top: 9px;
+}
