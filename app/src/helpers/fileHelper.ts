@@ -43,6 +43,10 @@ export function getFileChecksum(p: string) {
     });
 }
 
+export function getFileContents(p: string) {
+    return fs.readFileSync(p);
+}
+
 function checksum(str, algorithm, encoding) {
     return crypto
         .createHash(algorithm || 'md5')

@@ -20,7 +20,7 @@ export class WebApi {
     }
 
     private configureRoutes(app: express.Express) {
-        app.use("/api/images", imageRouter);
+        app.use("/api/image", imageRouter);
     }
 
     public run() {

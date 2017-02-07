@@ -9,12 +9,52 @@ let router = express.Router();
 
 
 router.get('/exist', (req: Request, res: Response, next: Function) => {
+
     let imageService = new ImageService();
 
-    imageService.exist(req.query.hash).then((exist) => {
+    imageService.exist(req.query.hash).then((exist: Boolean) => {
         res.json({
             exist: exist
         });
+    }).catch((err: Error) => {
+        res.status(500).json({
+            message: err.message
+        });
+    });
+});
+
+router.post('/upload', (req: Request, res: Response, next: Function) => {
+
+    let imageService = new ImageService();
+
+    imageService.upload(req.body).then((result: any) => {
+        res.json(true);
+    }).catch((err: Error) => {
+        res.status(500).json({
+            message: err.message
+        });
+    });
+});
+
+router.get('/list', (req: Request, res: Response, next: Function) => {
+
+    let imageService = new ImageService();
+
+    imageService.list().then((result: any) => {
+        res.json(result);
+    }).catch((err: Error) => {
+        res.status(500).json({
+            message: err.message
+        });
+    });
+});
+
+router.get('/drop', (req: Request, res: Response, next: Function) => {
+
+    let imageService = new ImageService();
+
+    imageService.drop().then((result: any) => {
+        res.json(result);
     }).catch((err: Error) => {
         res.status(500).json({
             message: err.message
