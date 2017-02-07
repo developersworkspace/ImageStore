@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": " gulp build",
+    "start": " gulp ts & node ./src/app.js"
+  },
+  "author": "Barend Erasmus",
+  "license": "MIT",
+  "dependencies": {
+    "@types/mongodb": "^2.1.38",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-typescript": "^3.1.4",
+    "mongodb": "^2.2.22",
+    "typescript": "^2.1.5"
+  }
+}
