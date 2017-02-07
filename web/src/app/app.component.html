@@ -12,7 +12,7 @@
     <div class="col-md-9" id="image-list">
       <div class="row">
         <div class="col-md-2 image-item" *ngFor="let item of images;">
-          <img src="/assets/images/sample/one.jpg" class="img-thumbnail" />
+          <img src="data:image/png;base64,{{item.base64}}" class="img-thumbnail" />
           <span class="label label-default">nature</span>
           <span class="label label-default">nature</span>
           <br />
