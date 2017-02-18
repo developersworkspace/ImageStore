@@ -1,6 +1,9 @@
 // Imports
 import * as mongodb from 'mongodb';
 
+// Imports models
+import { Thumbnail } from './../models/thumbnail';
+
 export class ImageService {
 
 
@@ -29,7 +32,7 @@ export class ImageService {
         });
     }
 
-    upload(obj: any) {
+    upload(obj: Thumbnail) {
         return new Promise((resolve, reject) => {
             let mongoClient = new mongodb.MongoClient();
             mongoClient.connect('mongodb://' + 'localhost' + ':27017/' + 'imagestore', (err: Error, db: mongodb.Db) => {
@@ -62,7 +65,7 @@ export class ImageService {
                     reject(err);
                 } else {
                     var collection = db.collection('images');
-                    collection.find().toArray((err: Error, result: any[]) => {
+                    collection.find().toArray((err: Error, result: Thumbnail[]) => {
                         resolve(result);
                         db.close();
                     });

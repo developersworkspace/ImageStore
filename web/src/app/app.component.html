@@ -13,15 +13,7 @@
       <div class="row">
         <div class="col-md-3 image-item text-center" *ngFor="let item of images;">
           <img src="data:image/png;base64,{{item.base64}}" class="img-thumbnail" />
-          <br />
-          <span class="label label-default">nature</span>
-          <span class="label label-default">nature</span>
-          <br />
-          <br />
-          <a href="#" class="pull-left"><i class="fa fa-download"></i> Download</a>
-          <span class="pull-right"><i class="fa fa-clock-o"></i> 2017-01-01</span>
-          <br />
-          <br />
+          <span *ngFor="let tag of item.tags;" class="label label-default">{{tag}}</span>
         </div>
       </div>
     </div>

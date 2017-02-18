@@ -1,12 +1,11 @@
 // Imports 
 import { Express, Request, Response } from "express";
+import * as express from 'express';
 
 // Imports services
 import { ImageService } from './../core/services/imageService';
 
-import * as express from 'express';
 let router = express.Router();
-
 
 router.get('/exist', (req: Request, res: Response, next: Function) => {
     console.log('exist');

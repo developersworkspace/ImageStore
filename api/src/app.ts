@@ -2,7 +2,10 @@
 import express = require("express");
 import bodyParser = require("body-parser");
 
-// Import Routes
+// Imports middleware
+import { CORS } from './middleware/common';
+
+// Imports routes
 import * as imageRouter from './routes/image';
 
 
@@ -15,8 +18,8 @@ export class WebApi {
 
     private configureMiddleware(app: express.Express) {
         app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: false }));;
-        
+        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(CORS);
     }
 
     private configureRoutes(app: express.Express) {

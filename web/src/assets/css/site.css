@@ -2,14 +2,6 @@
     height: 100%;
 }
 
-#image-list div button {
-    margin-top: 5px;
-}
-
-#image-list div {
-    margin-top: 9px;
-}
-
 .image-item {
     border-style: ridge;
     margin: 2px;
@@ -20,4 +12,8 @@
     margin-top: 2px;
     margin-bottom: 2px;
     max-height: 150px;
+}
+
+span.label {
+    margin-right: 5px;
 }
